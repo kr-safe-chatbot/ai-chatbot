@@ -1,0 +1,11 @@
+{
+  "functions": {
+    "api/ask.js": {
+      "runtime": "edge"
+    }
+  },
+  "routes": [
+    { "src": "/api/ask", "dest": "/api/ask.js" },
+    { "src": "/(.*)", "dest": "/index.html" }
+  ]
+}

@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8" />
+<title>AI Chatbot</title>
+</head>
+<body>
+<h2>AI Chatbot</h2>
+<input id="msg" placeholder="질문 입력" />
+<button onclick="sendChat()">보내기</button>
+<pre id="answer"></pre>
+
+<script>
+async function sendChat() {
+  const message = document.getElementById("msg").value;
+
+  const res = await fetch("/api/ask", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ message })
+  });
+
+  const data = await res.json();
+  document.getElementById("answer").innerText = data.answer;
+}
+</script>
+</body>
+</html>
